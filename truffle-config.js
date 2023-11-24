@@ -1,10 +1,10 @@
-require('babel-register')
-require('babel-polyfill')
+require('babel-register');
+require('babel-polyfill');
 
 module.exports = {
     networks:{
         development:{
-            host:'127.0.0.1:7545',
+            host:'127.0.0.1',
             port:'7545',
             network_id:'*'
         },
@@ -13,7 +13,7 @@ module.exports = {
     contracts_build_directory:'./src/truffle_abis',
     compilers:{
         solc:{
-            version:'0^.5.0',
+            version:'^0.8.9',
             optimizer:{
                 enable:true,
                 runs:200
