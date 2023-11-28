@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.9;
+pragma solidity >=0.4.22 <0.9.0;
 
 contract RWD {
     string public name = "Redward Token";
@@ -17,7 +17,7 @@ contract RWD {
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    constructor() {
+    constructor() public{
         balanceOf[msg.sender] = totalSupply;
     }
 
