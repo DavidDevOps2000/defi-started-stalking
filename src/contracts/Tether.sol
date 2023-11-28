@@ -38,6 +38,7 @@ contract Tether {
     ) public returns (bool success) {
         allowance[msg.sender][_spender] = _value;
         emit Approval(msg.sender, _spender, _value);
+        return true;
     }
 
     function transferFrom(
