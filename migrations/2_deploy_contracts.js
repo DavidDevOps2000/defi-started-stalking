@@ -1,20 +1,23 @@
 
-const tether = artifacts.require('Tether.sol');
-const rwd = artifacts.require('RWD.sol');
-const decentralBank = artifacts.require('DecentralBank.sol');
+const Tether = artifacts.require('Tether.sol');
+const RWD = artifacts.require('RWD.sol');
+const DecentralBank = artifacts.require('DecentralBank.sol');
 
-module.exports = async function (deployer) {
+module.exports = async function (deployer, network, accounts) {
     //Deploy mock Tether Contract
-        await deployer.deploy(tether);
-        //const tether = await Tether.deployed();
+        await deployer.deploy(Tether);
+        const tether = await Tether.deployed();
 
     //Deploy mock RWD Contract
-        await deployer.deploy(rwd);
-        //const rwd = await RWD.deployed();
+        await deployer.deploy(RWD);
+        const rwd = await RWD.deployed();
 
-    //Deploy mock Dee Contract
-        await deployer.deploy(decentralBank);
-        //const decentralBank = await DecentralBank.deployed();
+    //Deploy mock DecentralBank
+        await deployer.deploy(DecentralBank, rwd.address, tether.address);
+        const decentralBank = await DecentralBank.deployed();
 
-  deployer.deploy(tether);
+        await rwd.transfer(decentralBank.address,'1000000000000000000000000')
+
+        //Distribute 100 Tether tokens to invest
+        await tether.transfer(accounts[1],'1000000000000000000')
 };
