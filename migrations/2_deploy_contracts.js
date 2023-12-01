@@ -1,7 +1,7 @@
 
-const Tether = artifacts.require('Tether.sol');
-const RWD = artifacts.require('RWD.sol');
-const DecentralBank = artifacts.require('DecentralBank.sol');
+const Tether = artifacts.require('Tether');
+const RWD = artifacts.require('RWD');
+const DecentralBank = artifacts.require('DecentralBank');
 
 module.exports = async function (deployer, network, accounts) {
     //Deploy mock Tether Contract
