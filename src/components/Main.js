@@ -12,13 +12,12 @@ class Main extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style={{color:'white'}}>
+                        <tr style={{color:'black'}}>
                             <td>USDT</td>
                             <td>RWD</td>
                         </tr>
                     </tbody>
                 </table>
-
             </div>
         )
     }

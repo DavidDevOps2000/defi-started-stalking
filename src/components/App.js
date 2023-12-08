@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import "./App.css";
-import Navbar from "./Navbar";
-import Web3 from "web3";
-import Tether from "../truffle_abis/Tether.json";
-import RWD from "../truffle_abis/RWD.json";
-import DecentralBank from "../truffle_abis/DecentralBank.json";
-import Main from './Main';
+import React, { Component } from 'react';
+import './App.css';
+import Navbar from './Navbar.js';
+import Web3 from 'web3';
+import Tether from '../truffle_abis/Tether.json';
+import RWD from '../truffle_abis/RWD.json';
+import DecentralBank from '../truffle_abis/DecentralBank.json';
+import Main from './Main.js';
 
 class App extends Component {
   async UNSAFE_componentWillMount() {
@@ -20,7 +20,7 @@ class App extends Component {
     } else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider);
     } else {
-      window.alert("No Ethereum browser detected ! You Check out MetaMask");
+      window.alert('No Ethereum browser detected ! You Check out MetaMask');
     }
   }
 
@@ -30,7 +30,7 @@ class App extends Component {
     this.setState({ account: account[0] });
     console.log(account[0]);
     const networkId = await web3.eth.net.getId();
-    console.log(networkId, "Network ID");
+    console.log(networkId, 'Network ID');
 
     //Load Blockchain Data
     const rwdData = RWD.networks[networkId];
@@ -41,7 +41,7 @@ class App extends Component {
       this.setState({ rwdBalance: rwdBalance.toString() });
       console.log({ balance: rwdBalance });
     } else {
-      window.alert("Error Reward contract not deployed - no detected network");
+      window.alert('Error Reward contract not deployed - no detected network');
     }
 
     //Load Blockchain Data
@@ -58,7 +58,7 @@ class App extends Component {
       this.setState({ stakingBalance: stakingBalance.toString() });
       console.log({ balance: stakingBalance });
     } else {
-      window.alert("Decentral bank not deployed - no detected network");
+      window.alert('Decentral bank not deployed - no detected network');
     }
     //Load Blockchain Data
     const tetherData = Tether.networks[networkId];
@@ -71,7 +71,7 @@ class App extends Component {
       this.setState({ tetherBalance: tetherBalance.toString() });
       console.log({ balance: tetherBalance });
     } else {
-      window.alert("Error Tether contract not deployed - no detected network");
+      window.alert('Error Tether contract not deployed - no detected network');
     }
 
     this.setState({ loading: false });
@@ -80,13 +80,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      account: "0x0",
+      account: '0x0',
       tether: {},
       rwd: {},
       decentralBank: {},
-      tetherBalance: "0",
-      rwdBalance: "0",
-      stakingBalance: "0",
+      tetherBalance: '0',
+      rwdBalance: '0',
+      stakingBalance: '0',
       loading: true,
     };
   }
@@ -94,21 +94,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar account={this.state.account}>
-          <div className="container-fluid mt-5">
-            <div className="row">
+        <Navbar account={this.state.account}/>
+          <div className='container-fluid mt-5'>
+            <div className='row'>
               <main
-                role="main"
-                className="col-lg-12 ml-auto mr-auto"
-                style={{ maxHeight: "600px", minHeight: "100vm" }}
+                role='main'
+                className='col-lg-12 ml-auto mr-auto'
+                style={{ maxWidth: '600px', minHeight:'100vm' }}
               >
                 <div>
-                  <Main/>
+                  <Main />
                 </div>
               </main>
             </div>
           </div>
-        </Navbar>
       </div>
     );
   }
