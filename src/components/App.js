@@ -92,6 +92,10 @@ class App extends Component {
   }
 
   render() {
+    let content // '?' is IF
+    {this.state.loading ? content = 
+    <p id='loader' className='text center' style={{margin:'30px'}}>LOADING PLEASE....</p> :// true 
+    content = <Main/>}//false
     return (
       <div>
         <Navbar account={this.state.account}/>
@@ -103,7 +107,7 @@ class App extends Component {
                 style={{ maxWidth: '600px', minHeight:'100vm' }}
               >
                 <div>
-                  <Main />
+                  {content}
                 </div>
               </main>
             </div>
