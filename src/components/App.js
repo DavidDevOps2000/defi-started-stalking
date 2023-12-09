@@ -15,7 +15,7 @@ class App extends Component {
 
   async loadWeb3() {
     if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
+     window.web3 = new Web3(window.ethereum);
       await window.ethereum.enable();
     } else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider);
@@ -93,9 +93,12 @@ class App extends Component {
 
   render() {
     let content // '?' is IF
+    // eslint-disable-next-line no-lone-blocks
     {this.state.loading ? content = 
     <p id='loader' className='text center' style={{margin:'30px'}}>LOADING PLEASE....</p> :// true 
-    content = <Main/>}//false
+    content = <Main tetherBalance ={this.state.tetherBalance}
+    rwdBalance={this.state.rwdBalance}
+    stakingBalance={this.state.stakingBalance}/>}//false    
     return (
       <div>
         <Navbar account={this.state.account}/>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import tether from '../tether.png';
 class Main extends Component {
   render() {
+    console.log(this.props.tetherBalance)
     return (
       <div id='content' className='mt-3'>
         <table className='table text-muted text-center'>
@@ -13,8 +14,8 @@ class Main extends Component {
           </thead>
           <tbody>
             <tr style={{ color: 'black' }}>
-              <td>USDT</td>
-              <td>RWD</td>
+              <td>{window.web3.utils.fromWei(this.props.stakingBalance, 'Ether')}USDT</td>
+              <td>{window.web3.utils.fromWei(this.props.rwdBalance, 'Ether')}RWD</td>
             </tr>
           </tbody>
         </table>
@@ -25,7 +26,7 @@ class Main extends Component {
                 <b> Stake Tokens</b>
               </label>
               <span className='float-right' style={{ marginRight: '8px' }}>
-                Balance
+                Balance: {window.web3.utils.fromWei(this.props.stakingBalance, 'Ether')}
               </span>
               <div className='input-group mb-4'>
                 <input type='text' placeholder='0' required/>
