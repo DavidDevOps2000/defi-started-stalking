@@ -21,7 +21,7 @@ contract RWD {
         balanceOf[msg.sender] = totalSupply;
     }
 
-    function transfer(address _to, uint _value) public returns (bool success) {
+    function transfer(address _to, uint _value) public returns(bool success) {
         // require that the value is greater or equals to transfer
         require(balanceOf[msg.sender] >= _value);
         //Transfer  the amount and substract the balances
