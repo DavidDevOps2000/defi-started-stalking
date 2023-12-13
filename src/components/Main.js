@@ -21,6 +21,7 @@ class Main extends Component {
         </table>
         <div className='card mb-2' style={{ opacity: '.9' }}>
           <form onSubmit={(event)=>{
+            event.preventDefault()
           let amount
           amount = this.input.value.toString()
           amount = window.web3.utils.toWei(amount,'Ether')

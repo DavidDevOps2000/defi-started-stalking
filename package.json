@@ -21,7 +21,7 @@
     "ganache": "^7.4.4-alpha.0",
     "identicon.js": "^2.3.3",
     "mocha": "^10.2.0",
-    "npm": "^10.2.4",
+    "npm": "^10.2.5",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^9.3.0",
@@ -37,7 +37,7 @@
     "web3": "^1.10.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
