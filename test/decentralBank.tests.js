@@ -1,4 +1,3 @@
-const { assert } = require('console');
 
 // eslint-disable-next-line no-undef
 const Tether = artifacts.require('Tether.sol');
@@ -9,10 +8,10 @@ const DecentralBank = artifacts.require('DecentralBank.sol');
 
 require('chai')
 .use(require('chai-as-promised'))
-.should()
+.should();
 
 // eslint-disable-next-line no-undef
-contract('decentralBank', ([owner, costumer]) => {
+contract('DecentralBank', ([owner, costumer]) => {
 
     let tether, rwd, decentralBank
     
@@ -21,18 +20,20 @@ contract('decentralBank', ([owner, costumer]) => {
         return web3.utils.toWei(number, 'ether')
         
     }
-    before( async ()=>{
+    // eslint-disable-next-line no-undef
+    before(async ()=>{
         //Load Contracts
         tether = await Tether.new()
         rwd = await RWD.new()
         decentralBank = await DecentralBank.new(rwd.address, tether.address)
 
         //Transfer all tokens to DecentralBank (1 Million)
-        await rwd.transfer(decentralBank.address, web3.utils.toWei('1000000'))
+        await rwd.transfer(decentralBank.address, window.web3.utils.toWei('1000000'))
 
         //Trsnfer 100 mock Tether to Costumer
         await tether.transfer(costumer, tokens('100'), {from: owner})
     })
+    
 //All of code goes here for testing
     describe('Mock Tether Deployment', async ()=>{
     it('matches name successfully', async ()=>{
