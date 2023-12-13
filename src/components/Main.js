@@ -4,7 +4,7 @@ class Main extends Component {
   render() {
     console.log(this.props.tetherBalance)
     return (
-      <div id='content' className='mt-3'>
+      <div id='content' style={{color:'white'}} className='mt-3'>
         <table className='table text-muted text-center'>
           <thead>
             <tr style={{ color: 'white' }}>
@@ -13,7 +13,7 @@ class Main extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr style={{ color: 'black' }}>
+            <tr style={{ color: 'white' }}>
               <td>{window.web3.utils.fromWei(this.props.stakingBalance, 'Ether')}USDT</td>
               <td>{window.web3.utils.fromWei(this.props.rwdBalance, 'Ether')}RWD</td>
             </tr>
@@ -48,7 +48,9 @@ class Main extends Component {
               <button type='submit' className='btn btn-primary btn-lg btn-block' >DEPOSIT</button>
             </div>
           </form>
-          <button type='submit' className='btn btn-primary btn-lg btn-block'>WITHDRAW</button>
+          <button type='submit' onClick={(event)=>{
+            event.preventDefault(this.props.unstakeTokens())
+          }} className='btn btn-primary btn-lg btn-block'>WITHDRAW</button>
           <div className='card-body text-center' style={{color:'blue'}}>AIRDROP</div>
         </div>
       </div>

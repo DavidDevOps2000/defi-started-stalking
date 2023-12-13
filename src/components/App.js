@@ -6,6 +6,7 @@ import Tether from '../truffle_abis/Tether.json';
 import RWD from '../truffle_abis/RWD.json';
 import DecentralBank from '../truffle_abis/DecentralBank.json';
 import Main from './Main.js';
+import ParticlesSettings from './ParticleSettings';
 
 class App extends Component {
   async UNSAFE_componentWillMount() {
@@ -111,14 +112,15 @@ constructor(props) {
     let content // '?' is IF
     // eslint-disable-next-line no-lone-blocks
     {this.state.loading ? content = 
-    <p id='loader' className='text center' style={{margin:'30px'}}>LOADING PLEASE....</p> :// true 
+    <p id='loader' className='text center' style={{margin:'30px',color:'white'}}>LOADING PLEASE....</p> :// true 
     content = <Main tetherBalance ={this.state.tetherBalance}
     rwdBalance={this.state.rwdBalance}
     stakingBalance={this.state.stakingBalance}
     stakeTokens = {this.stakeTokens}
     unstakeTokens={this.unstakeTokens}/>}//false    
     return (
-      <div>
+      <div class='App' style={{position:'relative'}}>
+        <div style={{position:'absolute'}}><ParticlesSettings/></div>
         <Navbar account={this.state.account}/>
           <div className='container-fluid mt-5'>
             <div className='row'>
