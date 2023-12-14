@@ -7,6 +7,7 @@ import RWD from '../truffle_abis/RWD.json';
 import DecentralBank from '../truffle_abis/DecentralBank.json';
 import Main from './Main.js';
 import ParticlesSettings from './ParticleSettings';
+import Airdrop from './Airdrop';
 
 class App extends Component {
   async UNSAFE_componentWillMount() {
