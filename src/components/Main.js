@@ -29,9 +29,10 @@ class Main extends Component {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              let amount;
+              let amount
               amount = this.input.value.toString();
               amount = window.web3.utils.toWei(amount, "Ether");
+              console.log(amount)
               this.props.stakeTokens(amount);
             }}
             className="mb-3"

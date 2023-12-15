@@ -17,7 +17,7 @@ contract('DecentralBank', ([owner, costumer]) => {
     
     function tokens(number) {
         // eslint-disable-next-line no-undef
-        return web3.utils.toWei(number, 'ether')
+        return window.web3.utils.toWei(number, 'ether')
         
     }
     // eslint-disable-next-line no-undef
