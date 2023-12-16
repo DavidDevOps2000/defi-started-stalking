@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import "./App.css";
-import Navbar from "./Navbar.js";
-import Web3 from "web3";
-import Tether from "../truffle_abis/Tether.json";
-import RWD from "../truffle_abis/RWD.json";
-import DecentralBank from "../truffle_abis/DecentralBank.json";
-import Main from "./Main.js";
-import ParticlesSettings from "./ParticleSettings";
+import React, { Component } from 'react';
+import './App.css';
+import Navbar from './Navbar.js';
+import Web3 from 'web3';
+import Tether from '../truffle_abis/Tether.json';
+import RWD from '../truffle_abis/RWD.json';
+import DecentralBank from '../truffle_abis/DecentralBank.json';
+import Main from './Main.js';
+import ParticlesSettings from './ParticleSettings';
 
 class App extends Component {
   async UNSAFE_componentWillMount() {
@@ -21,7 +21,7 @@ class App extends Component {
     } else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider);
     } else {
-      window.alert("No Ethereum browser detected ! You Check out MetaMask");
+      window.alert('No Ethereum browser detected ! You Check out MetaMask');
     }
   }
 
@@ -31,7 +31,7 @@ class App extends Component {
     this.setState({ account: account[0] });
     console.log(account[0]);
     const networkId = await web3.eth.net.getId();
-    console.log(networkId, "Network ID");
+    console.log(networkId, 'Network ID');
 
     //Load Blockchain Data
     const rwdData = RWD.networks[networkId];
@@ -41,7 +41,7 @@ class App extends Component {
       let rwdBalance = await rwd.methods.balanceOf(this.state.account).call();
       this.setState({ rwdBalance: rwdBalance.toString() });
     } else {
-      window.alert("Error Reward contract not deployed - no detected network");
+      window.alert('Error Reward contract not deployed - no detected network');
     }
 
     //Load Blockchain Data
@@ -57,7 +57,7 @@ class App extends Component {
         .call();
       this.setState({ stakingBalance: stakingBalance.toString() });
     } else {
-      window.alert("Decentral bank not deployed - no detected network");
+      window.alert('Decentral bank not deployed - no detected network');
     }
     //Load Blockchain Data
     const tetherData = Tether.networks[networkId];
@@ -70,7 +70,7 @@ class App extends Component {
         console.log(this.state.tetherBalance)
       this.setState({ tetherBalance: tetherBalance.toString() });
     } else {
-      window.alert("Error Tether contract not deployed - no detected network");
+      window.alert('Error Tether contract not deployed - no detected network');
     }
     this.setState({ loading: false });
   }
@@ -81,11 +81,11 @@ class App extends Component {
     this.state.tether.methods
       .approve(this.state.decentralBank._address, amount)
       .send({ from: this.state.account })
-      .on("transactionHash", (hash) => {
+      .on('transactionHash', (hash) => {
         this.state.decentralBank.methods
           .depositTokens(amount)
           .send({ from: this.state.account })
-          .on("transactionHash", (hash) => {
+          .on('transactionHash', (hash) => {
             this.setState({ loading: false });
           });
       });
@@ -96,7 +96,7 @@ class App extends Component {
     this.state.decentralBank.methods
       .unstakeTokens()
       .send({ from: this.state.account })
-      .on("transactionHash", (hash) => {
+      .on('transactionHash', (hash) => {
         this.setState({ loading: false });
       });
   };
@@ -104,13 +104,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      account: "0x0",
+      account: '0x0',
       tether: {},
       rwd: {},
       decentralBank: {},
-      tetherBalance: "0",
-      rwdBalance: "0",
-      stakingBalance: "0",
+      tetherBalance: '0',
+      rwdBalance: '0',
+      stakingBalance: '0',
       loading: true,
     };
   }
@@ -122,9 +122,9 @@ class App extends Component {
       this.state.loading
         ? (content = (
             <p
-              id="loader"
-              className="text center"
-              style={{ margin: "30px", color: "white" }}
+              id='loader'
+              className='text center'
+              style={{ margin: '30px', color: 'white' }}
             >
               LOADING PLEASE....
             </p>
@@ -140,17 +140,17 @@ class App extends Component {
           ));
     } //false
     return (
-      <div className="App" style={{ position: "relative" }}>
-        <div style={{ position: "absolute" }}>
+      <div className='App' style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute' }}>
           <ParticlesSettings />
         </div>
         <Navbar account={this.state.account} />
-        <div className="container-fluid mt-5">
-          <div className="row">
+        <div className='container-fluid mt-5'>
+          <div className='row'>
             <main
-              role="main"
-              className="col-lg-12 ml-auto mr-auto"
-              style={{ maxWidth: "600px", minHeight: "100vm" }}
+              role='main'
+              className='col-lg-12 ml-auto mr-auto'
+              style={{ maxWidth: '600px', minHeight: '100vm' }}
             >
               <div>{content}</div>
             </main>

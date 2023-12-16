@@ -1,10 +1,10 @@
 
 // eslint-disable-next-line no-undef
-const Tether = artifacts.require("Tether");
+const Tether = artifacts.require('Tether');
 // eslint-disable-next-line no-undef
-const RWD = artifacts.require("RWD");
+const RWD = artifacts.require('RWD');
 // eslint-disable-next-line no-undef
-const DecentralBank = artifacts.require("DecentralBank");
+const DecentralBank = artifacts.require('DecentralBank');
 
 module.exports = async function (deployer, network, accounts) {
     //Deploy mock Tether Contract
@@ -19,8 +19,8 @@ module.exports = async function (deployer, network, accounts) {
         await deployer.deploy(DecentralBank, rwd.address, tether.address);
         const decentralBank = await DecentralBank.deployed();
 
-        await rwd.transfer(decentralBank.address,"1000000000000000000")
+        await rwd.transfer(decentralBank.address,'1000000000000000000')
 
         //Distribute 100 Tether tokens to invest
-        await tether.transfer(accounts[1],"1000000000000000000")
+        await tether.transfer(accounts[1],'1000000000000000000')
 };
