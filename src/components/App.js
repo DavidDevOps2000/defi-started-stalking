@@ -40,7 +40,6 @@ class App extends Component {
       this.setState({ rwd });
       let rwdBalance = await rwd.methods.balanceOf(this.state.account).call();
       this.setState({ rwdBalance: rwdBalance.toString() });
-      console.log({ balance: rwdBalance });
     } else {
       window.alert("Error Reward contract not deployed - no detected network");
     }
@@ -57,7 +56,6 @@ class App extends Component {
         .stakingBalance(this.state.account)
         .call();
       this.setState({ stakingBalance: stakingBalance.toString() });
-      console.log({ balance: stakingBalance });
     } else {
       window.alert("Decentral bank not deployed - no detected network");
     }
@@ -69,8 +67,8 @@ class App extends Component {
       let tetherBalance = await tether.methods
         .balanceOf(this.state.account)
         .call();
+        console.log(this.state.tetherBalance)
       this.setState({ tetherBalance: tetherBalance.toString() });
-      console.log({ balance: tetherBalance });
     } else {
       window.alert("Error Tether contract not deployed - no detected network");
     }
